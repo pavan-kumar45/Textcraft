@@ -15,7 +15,6 @@ import {
 
 
 
-
 function App() {
   const [mode, setMode] = useState('light');
   const [alert,setAlert]=useState(null);
@@ -28,10 +27,21 @@ function App() {
 
     setTimeout(() => {
       setAlert(null);
-    }, 2000);
+    }, 3000);
   }
-
-  const toggleMode=()=>{
+  
+  // const removebodyClasses=()=>{
+  //   document.body.classList.remove('bg-light')
+  //   document.body.classList.remove('bg-dark')
+  //   document.body.classList.remove('bg-warning')
+  //   document.body.classList.remove('bg-sucess')
+  //   document.body.classList.remove('bg-danger')
+  //   document.body.classList.remove('bg-primary')
+  // }
+  const toggleMode=(cls)=>{
+    // removebodyClasses();
+    // console.log(cls);
+    // document.body.classList.add('bg-'+cls);
     if(mode==='light'){
       setMode('dark');
       document.body.style.backgroundColor='grey';

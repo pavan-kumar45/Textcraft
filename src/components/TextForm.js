@@ -21,10 +21,7 @@ export default function TextForm(props) {
     }
 
     const handleCopy=()=>{
-      console.log("On change");
-      var text=document.getElementById("myBox");
-      text.select();
-      navigator.clipboard.writeText(text.value);
+      navigator.clipboard.writeText(text);
       props.showAlert("copied to clipboard","success");
     }
 
@@ -49,22 +46,22 @@ export default function TextForm(props) {
         <h1>{props.heading}</h1>
         <div className="mb-3">
         <label htmlFor="myBox" className="form-label">Example textarea</label>
-        <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor:props.mode==='dark'?'grey':'white', color:props.mode==='dark'?'white':'black'}} id="myBox" rows="8"></textarea>
+        <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor:props.mode==='dark'?'#363232':'white', color:props.mode==='dark'?'white':'black'}} id="myBox" rows="8"></textarea>
         </div>
 
-        <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to UpperCase</button>
-        <button className="btn btn-primary mx-2" onClick={handleLowClick}>Convert to LowerCase</button>
-        <button className="btn btn-primary mx-2" onClick={handleClearClick}>clear text</button>
-        <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy Text</button>
-        <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+        <button className="btn btn-primary mx-2 my=1" onClick={handleUpClick}>Convert to UpperCase</button>
+        <button className="btn btn-primary mx-2 my=1" onClick={handleLowClick}>Convert to LowerCase</button>
+        <button className="btn btn-primary mx-2 my=1" onClick={handleClearClick}>clear text</button>
+        <button className="btn btn-primary mx-2 my=1" onClick={handleCopy}>Copy Text</button>
+        <button className="btn btn-primary mx-2 my=1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
 
     </div>
 
 
     <div className="container my-3" style={{color:props.mode==='dark'?'white':'black'}}>
       <h1>Your text summary</h1>
-      <p>{text.split(" ").length} words and {text.length} characters</p>
-      <p>{0.008* text.split(" ").length} Minutes read</p>
+      <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
+      <p>{0.008* text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes read</p>
       <h2>preview</h2>
       <p>{text.length>0?text:"enter something to preview it"}</p>
 
